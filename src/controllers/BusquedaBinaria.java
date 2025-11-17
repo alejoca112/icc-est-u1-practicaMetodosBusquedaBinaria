@@ -34,7 +34,7 @@ public class BusquedaBinaria {
                     swapped = true;
                 }
             }
-            if(swapped){
+            if(!swapped){
                 break;
             }
         }

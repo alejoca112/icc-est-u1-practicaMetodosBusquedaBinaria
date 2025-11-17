@@ -1,4 +1,5 @@
 package views;
+import models.Persona;
 
 public class ShowConsole {
     public void showResult(Integer result){
@@ -8,5 +9,13 @@ public class ShowConsole {
             System.out.println("El elemento " + result + " no se encuentra en el arreglo.");
         }   
 
+    }
+
+    public void showResult(Persona people){
+        if(people != null){
+            System.out.println("Persona encontrada: " + people.toString());
+        } else {
+            System.out.println("No se encontro la persona.");
+        }
     }
 }

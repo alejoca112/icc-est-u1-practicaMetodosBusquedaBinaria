@@ -2,6 +2,7 @@
 import controllers.BusquedaBinaria;
 import models.Persona;
 import views.ShowConsole;
+import controllers.PersonaController;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -14,6 +15,7 @@ public class App {
         Integer result = bB.busquedaBinaria(arr, 10 );
 
         sC.showResult(result);
+        PersonaController pC = new PersonaController();
         Persona[] people = new Persona[] {
             new Persona("Juan", 25),
             new Persona("Ana", 30),
@@ -23,6 +25,9 @@ public class App {
             new Persona("Carmen", 27),
             new Persona("Sofia", 24),
         };
+        pC.bubbleSortByName(people);
+        Persona result2 = pC.findPersonaByName(people, "Pedro");
+        sC.showResult(result2);
     }
 
 }
