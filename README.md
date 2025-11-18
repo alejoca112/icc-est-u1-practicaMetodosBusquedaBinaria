@@ -1,7 +1,7 @@
-## Busqueda Binaria
+## Busqueda Binaria por Edad
 
 #### Estudiante: Geovanny Cabrera
 
 Salida de Java
 
-![alt text](assets/BusquedaBinaria.png)
+![alt text](assets/MetodoBusquedaBinaria.png)
