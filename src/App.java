@@ -17,16 +17,22 @@ public class App {
         sC.showResult(result);
         PersonaController pC = new PersonaController();
         Persona[] people = new Persona[] {
-            new Persona("Juan", 25),
-            new Persona("Ana", 30),
-            new Persona("Pedro", 20),
-            new Persona("Maria", 28),
-            new Persona("Luis", 22),
-            new Persona("Carmen", 27),
-            new Persona("Sofia", 24),
+            new Persona("Pablo", 4),
+            new Persona("Maria", 5),
+            new Persona("Juan", 18),
+            new Persona("David", 60),
+            new Persona("Mateo", 25),
+            new Persona("Diego", 12),
+            new Persona("Ana", 8),
+            new Persona("Alicia",9),
+            new Persona("Jaime", 40),
         };
-        pC.bubbleSortByName(people);
-        Persona result2 = pC.findPersonaByName(people, "Pedro");
+        pC.bubbleSortByAge(people);
+        for(Persona p : people){
+            System.out.print(p.getEdad() + " ");
+        }
+        System.out.println("\n");
+        Persona result2 = pC.findPersonaByAge(people, 18);
         sC.showResult(result2);
     }
 

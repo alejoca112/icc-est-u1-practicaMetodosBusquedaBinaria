@@ -2,11 +2,11 @@ package controllers;
 import models.Persona;
 
 public class PersonaController {
-    public void bubbleSortByName(Persona[] people){
+    public void bubbleSortByAge(Persona[] people){
         for (int i = 0; i < people.length; i++) {
             boolean swapped = false;
             for (int j = 0; j < people.length - i - 1; j++) {
-                if (people[j].getNombre().compareTo(people[j + 1].getNombre()) > 0) {
+                if (people[j].getEdad() > people[j + 1].getEdad()) {
                     // Intercambio
                     Persona temp = people[j];
                     people[j] = people[j + 1];
@@ -20,45 +20,48 @@ public class PersonaController {
         }
     }
 
-    public Persona findPersonaByName(Persona[] people, String nombre){
+    public Persona findPersonaByAge(Persona[] people, int objetivo){
         int izquierda = 0;
         int derecha = people.length - 1;
-
         while(izquierda <= derecha){
-            int medio = izquierda + (derecha - izquierda) / 2;
-            // Primero validamos el medio
-            if(people[medio].getNombre().equals(nombre)){
-                return people[medio];
-            }
-            // Segundo ya que no entro a ese bucle, decido si busco a la derecha o a la izquierda y eso se hace con un if
-            if(people[medio].getNombre().compareTo(nombre) < 0){            //ascendentemente ordenado
-                izquierda = medio + 1;  
+            int medio = izquierda + (derecha - izquierda)/2;
+            int comparacion = people[medio].getEdad();
+
+            printSarray(people, izquierda, derecha);
+
+            String direccion;
+            if(comparacion == objetivo){
+                direccion = "Encontrado";
+            } else if(comparacion < objetivo){
+                direccion = "Derecha";
             } else {
-                derecha = medio - 1;
+                direccion = "Izquierda";
             }
+
+            System.out.println("bajo= " + izquierda + " alto= " + derecha + " medio= " + medio + " valor medio= "
+             + comparacion + " ->> " + direccion);
+
+             if(comparacion == objetivo){
+                System.out.println();
+                return people[medio];
+             } else if(comparacion < objetivo){
+                izquierda = medio + 1;
+             } else {
+                derecha = medio - 1;
+             }
+             System.out.println();
         }
         return null;
     }
 
-
-    // Metodo sin equals
-    public Integer binarySearchPersonByName(Persona[] people, String targetName){
-        int left = 0;
-        int right = people.length -1;
-
-        while(left <= right) {
-            int mid = left + (right - left) / 2;
-            int comparison = people[mid].getNombre().compareTo(targetName);
-
-            if(comparison == 0){
-                return mid; // Nombre encontrado
-            } else if (comparison < 0){
-                left = mid + 1; // Buscar en la mitad derecha
-            } else {
-                right = mid - 1; //Buscar en la mitad izquierda
+    public void printSarray(Persona[] people, int izquierda, int derecha){
+        for(int i = izquierda; i <= derecha; i++){
+            System.out.print(people[i].getEdad());
+            if(i < derecha){
+                System.out.print(" | ");
             }
         }
-        return null;   //Nombre no encontrado
+        System.out.println(); 
     }
     
 }
